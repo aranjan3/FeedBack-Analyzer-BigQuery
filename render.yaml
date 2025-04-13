@@ -1,0 +1,10 @@
+services:
+  - type: cron
+    name: customer-feedback-scheduler
+    schedule: "0 * * * *"  # every hour
+    runtime: python
+    buildCommand: ""
+    startCommand: "python main.py"
+    envVars:
+      - key: GOOGLE_APPLICATION_CREDENTIALS
+        value: creds/creds.json
