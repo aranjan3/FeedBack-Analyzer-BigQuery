@@ -4,7 +4,11 @@ import os
 # Add the 'src' directory to the system path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "C:/APOORV/PROJECTS/Customer_Sentiment_Analysis/creds/creds.json"
+# Use the GOOGLE_APPLICATION_CREDENTIALS environment variable to fetch credentials
+google_creds = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", None)
+if not google_creds:
+    print("❌ GOOGLE_APPLICATION_CREDENTIALS environment variable not set.")
+    exit(1)
 
 # Now, you can import the modules correctly
 from fetch_data import fetch_sheet_data
